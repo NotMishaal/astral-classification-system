@@ -3,47 +3,57 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Astral Classification System</title>
-	<link rel="stylesheet" type="text/css" href="homepage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body>  
+    <div class="navbar">
+        <nav>
+        <a href="homepage.html" class="logo">Logo</a>
+        <ul class="nav-links">
+            <li><a href="#">About the project</a></li>
+            <li><a href="team.html">Meet the team</a></li>
+            <li><a href="#">Classify</a></li>
+            <li class="signup"><a href="login.html">Sign Up</a></li>
+        </ul>
+        </nav>
+    </div>
     <div class="container">
-        <div class="navbar">
-             <nav>
-                <ul>
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">LOGIN</a></li>
-                    <li><a href="">CLASSIFICATION</a></li>
-                    <li><a href="">USER INFO</a></li>
-                    <li><a href="">TEAM</a></li>
-                </ul>
-             </nav>
-        </div>
-
         <div class="row">
             <div class="col">
-                <h1>Astral Classification System</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo sit minus, nobis nam culpa, porro est aut ratione sunt, voluptatum voluptates facere soluta saepe animi dicta in nisi ipsam ut.
+                <h1 id="tagline">Astral Classification System</h1>
+                <p>
+                    Are you curious about the mysteries of the universe? <br>
+                    Do you want to explore the wonders of the cosmos and <br>
+                    discover your place among the stars? Our astral  <br>
+                    classification web app can help you unlock the secrets <br> 
+                    of the universe and understand the unique properties <br>
+                    of celestial bodies. <br>
                 </p>
-                <button type="button">About</button>
+                <a href="#" class="button">Get Started</a>
             </div>
             <div class="col">
-                <div class="card card1">
-                    <h5>Astroids</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div class="row">
+                    <div class="card card1">
+                        <h3>Astroids</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card card2">
+                        <h3>Quasar</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
                 </div>
-                <div class="card card2">
-                    <h5>Quasar</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="card card3">
-                    <h5>Black Holes</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="card card4">
-                    <h5>Planets</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div class="row">
+                    <div class="card card3">
+                        <h3>Black Holes</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card card4">
+                        <h3>Planets</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
                 </div>
             </div>
         </div>
