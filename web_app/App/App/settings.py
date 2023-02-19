@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#Login url config
+LOGIN_URL = 'loginView' 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'Auth',
-    'Dashboard',
+    'Dashboard', 
+    'Home', 
+    'AstralObject',
 ]
 
 MIDDLEWARE = [

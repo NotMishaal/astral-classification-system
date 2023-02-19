@@ -1,15 +1,110 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.9.0-->
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-  </head>
-  <body>
-    <h3>Welcome {{request.user}}</h3>  
-    <a href='{% url 'logout' %}'>Logout</a> 
-  </body>
+    <link rel="stylesheet" type="text/css" href="../css/landing.css">
+</head>
+
+<body>
+    <section class="hero is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="{% url 'dashboardView' %}">
+                            <h1 class='title'>LOGO</h1> 
+                        </a>
+                        <span class="navbar-burger burger" data-target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+
+                          <span class="navbar-item">
+                            <a class="button is-primary is-outlined" href="{% url 'resultView' %}">
+                                <span>Results</span>
+                            </a>
+                        </span> 
+
+                            <span class="navbar-item">
+                                <a class="button is-primary is-outlined" href="{% url 'logout' %}">
+                                    <span class="icon">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </span>
+                                    <span>Logout</span>
+                                </a>
+                            </span> 
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            </div>
+
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-6 is-offset-3">
+                        <h1 class="title">
+                            Classify your data
+                        </h1> <br> 
+                       <!-- 
+                        Inputs here with form 
+                       --> 
+                       <form method='post'>  
+                        {% csrf_token %} 
+                         <div class="columns"> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="ultraviolet" type="text" placeholder="Ultraviolet filter" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="green" type="text" placeholder="Green filter" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="near" type="text" placeholder="Near Infrared filter" required>
+                          </div> 
+                        </div> 
+                        <div class="columns"> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="red" type="text" placeholder="Red filter" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="infrared" type="text" placeholder="Infrared filter" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" name="julian" type="text" placeholder="Modified Julian Date" required>
+                          </div> 
+                        </div> 
+                        <div class="columns"> 
+                          <div class="column">  
+                            <input class="input is-rounded" type="text" name="spectroscopic" placeholder="Spectroscopic Objects ID" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" type="text" name="redshift" placeholder="Redshift Value" required>
+                          </div> 
+                          <div class="column">  
+                            <input class="input is-rounded" type="text" name="plate" placeholder="Plate ID" required>
+                          </div> 
+                        </div>  <br>  
+                        <input type="submit"  class="button is-primary is-outlined" value="Get Results">
+                       </form>  
+                    </div> 
+
+                </div>
+            </div>
+    </section>
+    <script async type="text/javascript" src="../js/bulma.js"></script>
+</body>
+
 </html>
