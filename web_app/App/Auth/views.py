@@ -24,7 +24,7 @@ def loginView(request):
 
 def registerView(request):
     if request.user.is_authenticated:
-        return HttpResponse('Login worked')
+        return redirect('dashboardView')
     else:
         form = CreateUserForm() 
         if request.method == 'POST': 
