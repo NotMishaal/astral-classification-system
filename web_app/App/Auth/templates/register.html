@@ -25,24 +25,36 @@
                 <div class="control"> 
                   {{form.username|attr:"placeholder:username"|add_class:"input is-medium"}}
                 </div>
+                {% if form.username.errors %}
+                     <div class="help is-danger">{{ form.username.errors }}</div>
+                 {% endif %}
               </div>
 
               <div class="field">
                 <div class="control">
                     {{form.email|attr:"placeholder:email"|add_class:"input is-medium"}}
                 </div>
+                {% if form.email.errors %}
+                <div class="help is-danger">{{ form.email.errors }}</div>
+            {% endif %}
               </div> 
 
               <div class="field">
                 <div class="control">
                     {{form.password1|attr:"placeholder:password"|add_class:"input is-medium"}}
                 </div>
+                {% if form.password1.errors %}
+                <div class="help is-danger">{{ form.password1.errors }}</div>
+            {% endif %}
               </div> 
 
               <div class="field">
                 <div class="control">
                     {{form.password2|attr:"placeholder:confirm password"|add_class:"input is-medium"}}
                 </div>
+                {% if form.password2.errors %}
+                <div class="help is-danger">{{ form.password2.errors }}</div>
+            {% endif %}
               </div> 
 
               <input type="submit" value='join' class="button is-block is-primary is-fullwidth is-medium"/>  
