@@ -5,17 +5,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>App</title>
+    <title>Astral Classification System</title>
     <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/landing.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" /> -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class="hero is-fullheight">
+    <!-- <section class="hero is-fullheight">
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
@@ -97,7 +101,40 @@
                 </div>
             </div>
 
-    </section>
+    </section> -->
+    
+    <div class="container">
+        <div class="navbar">
+            <nav>
+            <a href="home.html" class="logo">
+                <img src="{% static 'Pics/Logo.svg'%}" class="logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'aboutView' %}">About the project</a></li>
+                <li><a href="team.html">Meet the team</a></li>
+                <li><a href="#">Classify</a></li>
+                <li class="signup"><a href="{% url 'loginView' %}">Sign Up</a></li>
+            </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 id="tagline">Astral Classification System</h1>
+                <p>
+                    Are you curious about the mysteries of the universe? 
+                    Do you want to explore the wonders of the cosmos and 
+                    discover your place among the stars? Our astral  
+                    classification web app can help you unlock the secrets 
+                    of the universe and understand the unique properties 
+                    of celestial bodies. 
+                </p>
+                <a href="{% url 'loginView' %}" class="button">Get Started</a>
+            </div>
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
     <script async type="text/javascript" src="../js/bulma.js"></script>
 </body>
 
