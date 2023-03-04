@@ -7,3 +7,6 @@ def homeView(request):
 
 def aboutView(request):
     return render(request, 'about.html')
+
+def teamView(request):
+    return render(request, 'team.html')
