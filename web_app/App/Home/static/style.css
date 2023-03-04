@@ -301,9 +301,53 @@ p {
     font-size: 18px;
 }
 
-.login-logo{
+.login-logo {
     height: 75px;
     display: block;
     margin: 0 auto;
     padding-bottom: 10px;
+}
+
+/* Dashboard */
+
+.classifier {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%); 
+    background: rgba(58, 58, 58, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2%;
+}
+
+.dash-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
+
+.dash-col {
+    flex: 1;
+    /* margin: 10px; */
+    padding: 20px;
+    text-align: center;
+}
+
+.dash-input {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    width: 200px;
+}
+
+#classify-head {
+    text-align: center;
+    font-size: 75px;
 }
