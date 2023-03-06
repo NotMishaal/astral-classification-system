@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="{% url 'dashboardView' %}">
-                            <h1 class='title'>LOGO</h1> 
+                            <h1 class='title'>LOGO</h1>
                         </a>
                         <span class="navbar-burger burger" data-target="navbarMenu">
                             <span></span>
@@ -32,11 +32,11 @@
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
 
-                          <span class="navbar-item">
-                            <a class="button is-primary is-outlined" href="{% url 'dashboardView' %}">
-                                <span>Home</span>
-                            </a>
-                        </span> 
+                            <span class="navbar-item">
+                                <a class="button is-primary is-outlined" href="{% url 'dashboardView' %}">
+                                    <span>Home</span>
+                                </a>
+                            </span>
 
                             <span class="navbar-item">
                                 <a class="button is-primary is-outlined" href="{% url 'logout' %}">
@@ -45,47 +45,50 @@
                                     </span>
                                     <span>Logout</span>
                                 </a>
-                            </span> 
+                            </span>
 
                         </div>
                     </div>
                 </div>
             </nav>
-            </div>
+        </div>
 
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
-                        {%for result in results%} 
-                        <div class="columns"> 
-                            <div class="column">
-                        <div class="card">
-                            <div class="card-content">
-                              <div class="content">
-                                <h5>Result's</h5>  
-                                Created by : {{result.created_by}} <br> 
-                                Info :
-                                {{result.ultraviolet_filter}},
-                                {{result.green_filter}},
-                                {{result.near_infrared_filter}},
-                                {{result.red_filter}},
-                                {{result.infrared_filter}},
-                                {{result.modified_julian_date}}, 
-                                {{result.spectroscopic_objects_id}},
-                                {{result.redshift_value}}, 
-                                {{result.plate_id}}<br>
-                                <a class="button is-primary is-small" href="check/{{result.astral_id}}">Check</a>
-                                <a class="button is-danger is-small" href="delete/{{result.astral_id}}">Delete</a>
-                              </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3">
+                    {%for result in results%}
+                    <div class="columns">
+                        <div class="column">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <h5>Result's</h5>
+                                        Created by : {{result.created_by}} <br>
+                                        Info :
+                                        {{result.ultraviolet_filter}},
+                                        {{result.green_filter}},
+                                        {{result.near_infrared_filter}},
+                                        {{result.red_filter}},
+                                        {{result.infrared_filter}},
+                                        {{result.modified_julian_date}},
+                                        {{result.spectroscopic_objects_id}},
+                                        {{result.redshift_value}},
+                                        {{result.plate_id}}<br>
+                                        <a class="button is-primary is-small"
+                                            href="check/{{result.astral_id}}">Check</a>
+                                        <a class="button is-danger is-small"
+                                            href="delete/{{result.astral_id}}">Delete</a>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        </div></div> 
-                          <br> 
-                        {%endfor%}
-                    </div> 
-
+                        </div>
+                    </div>
+                    <br>
+                    {%endfor%}
                 </div>
+
             </div>
+        </div>
     </section>
     <script async type="text/javascript" src="../js/bulma.js"></script>
 </body>

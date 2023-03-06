@@ -5,99 +5,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>App</title>
+    <title>Astral Classification System</title>
     <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/landing.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" /> -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@100;300;400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class="hero is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="../">
-                            <h1 class='title'>LOGO</h1> 
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="{% url 'homeView' %}">
-                                    <span class="icon">
-                                        <i class="fa fa-home"></i>
-                                    </span>
-                                    <span>Home</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-superpowers"></i>
-                                    </span>
-                                    <span>Team</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-book"></i>
-                                    </span>
-                                    <span>About</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="{% url 'loginView' %}">
-                                    <span class="icon">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </span>
-                                    <span>Login</span>
-                                </a>
-                            </span> 
-
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="{% url 'registerView' %}">
-                                    <span class="icon">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </span>
-                                    <span>Sign Up</span>
-                                </a>
-                            </span>  
-
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+            <a href="{% url 'homeView' %}" class="logo">
+                <img src="{% static 'Pics/Logo.svg'%}" class="logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'aboutView' %}">About the project</a></li>
+                <li><a href="{% url 'teamView' %}">Meet the team</a></li>
+                <li class="signup"><a href="{% url 'loginView' %}">Sign Up</a></li>
+            </ul>
             </nav>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 id="tagline">Astral Classification System</h1>
+                <p class="justified">
+                    Are you curious about the mysteries of the universe? 
+                    Do you want to explore the wonders of the cosmos and 
+                    discover your place among the stars? Our astral  
+                    classification web app can help you unlock the secrets 
+                    of the universe and understand the unique properties 
+                    of celestial bodies. 
+                </p>
+                <a href="{% url 'loginView' %}" class="button">Get Started</a>
             </div>
-
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
-                        <h1 class="title">
-                            Astral Classification System
-                        </h1> <br> 
-                        <h2 class="subtitle">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                         </h2> <br> 
-                                    <a class="button is-primary" href="{% url 'loginView' %}">
-                                        Get Started
-                                    </a>
-                                </p>
-                    </div> 
-
-                </div>
+            <div class="mid-col">
+                <img class="landing_img" src="{% static 'Pics/g1.png' %}">
             </div>
-
-    </section>
+        </div>
+    </div>
     <script async type="text/javascript" src="../js/bulma.js"></script>
 </body>
 

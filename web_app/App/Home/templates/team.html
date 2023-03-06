@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Astral Classification System</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@100;300;400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <nav>
+                <a href="{% url 'homeView' %}" class="logo">
+                    <img src="{% static 'Pics/Logo.svg'%}" class="logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'aboutView' %}">About the project</a></li>
+                    <li><a href="{% url 'teamView' %}">Meet the team</a></li>
+                    <!-- <li><a href="#">Classify</a></li> -->
+                    <li class="signup"><a href="{% url 'loginView' %}">Sign Up</a></li>
+                </ul>
+                </nav>
+            </div>
+            <div class="trow1">
+                <div class="tcol">
+                    <h1 id="tagline">Meet our team of developers</h1>
+                </div>
+            </div>
+            <div class="trow2">
+                <div class="tcol">
+                    <img src="{% static 'Pics/person.svg'%}" alt="Portrait of Mishaal" class="portrait">
+                    <h2>M. Mishaal Rifath</h2>
+                    <p id="email">mishaal.20210822@iit.ac.lk</p>
+                    <p>
+                        Team Leader<br>
+                        Model Training<br>
+                        Front-end Development                    
+                    </p>
+                </div>
+                <div class="tcol">
+                    <img src="{% static 'Pics/person.svg'%}" alt="Portrait of Dasun" class="portrait">
+                    <h2>Dasun De Alwis</h2>
+                    <p id="email">dasun.20210221@iit.ac.lk</p>   
+                    <p>
+                        Model Training<br>
+                        Front-end Development 
+                    </p>                 
+                </div>
+                <div class="tcol">
+                    <img src="{% static 'Pics/person.svg'%}" alt="Portrait of Hazeek" class="portrait">
+                    <h2>Hazeek Ahamed</h2>    
+                    <p id="email">hazeek.20200161@iit.ac.lk</p>
+                    <p>
+                        Model Training<br>
+                        Back-end Development 
+                    </p>          
+                </div>
+                <div class="tcol">
+                    <img src="{% static 'Pics/person.svg'%}" alt="Portrait of Theekshana" class="portrait">
+                    <h2>Theekshana Rathnayake</h2>
+                    <p id="email">thathsara.20211539@iit.ac.lk</p>
+                    <p>
+                        Model Training<br>
+                        Back-end Development 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
