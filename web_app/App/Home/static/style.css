@@ -137,39 +137,8 @@ p {
     text-align: center;
 }
 
-/* Cards */
-
-.card {
-    width: 200px;
-    height: 230px;
-    display: inline-block;
-    border-radius: 10px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    margin: 10px 15px;
-    background-position: center;
-    background-size: cover;
-    transition: transform 0.5s;
-}
-
-.card1 {
-    background-image: url('Pics/astroids.png');
-}
-
-.card2 {
-    background-image: url('Pics/quasar.jpg');
-}
-
-.card3 {
-    background-image: url('Pics/blackhole.jpg');
-}
-
-.card4 {
-    background-image: url('Pics/planets.jpg');
-}
-
-.card:hover {
-    transform: translateY(-10px);
+.landing_img {
+    width: 850px;
 }
 
 /* Team */
