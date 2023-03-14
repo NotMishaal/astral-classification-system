@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from AstralObject.models import Astral
 
+import pandas as pd
+import pickle
+
+
 # Create your views here.
 @login_required()
 def dashboardView(request):
@@ -40,7 +44,20 @@ def resultView(request):
     context = {
         'results': userResult,
     }
-    return render(request, 'results.html', context)
+    ultraviolet = float(request.GET['ultraviolet'])
+    green = float(request.GET['green'])
+    near = float(request.GET['near'])
+    red = float(request.GET['red'])
+    infrared = float(request.GET['infrared'])
+    julian = float(request.GET['julian'])
+    spectroscopic = float(request.GET['spectroscopic'])
+    redshift = float(request.GET['redshift'])
+    plate = float(request.GET['plate'])
+
+    result = get_prediction(ultraviolet, green, near, red, infrared, julian,
+                            spectroscopic, redshift, plate)
+
+    return render(request, 'results.html', context, {'result': result})
 
 
 def delete(request, id):
@@ -48,10 +65,45 @@ def delete(request, id):
     member.delete()
     return redirect('resultView')
 
-# Here we get the info about the model , so we can work with datas.
+
+# Here we get the info about the model , so we can work with data.
 def checkView(request, id):
     result = Astral.objects.get(astral_id=id)
     context = {
         'result': result,
     }
     return render(request, 'finalResult.html')
+
+
+def get_prediction(ultraviolet, green, near, red, infrared, julian, spectroscopic, redshift, plate):
+    # load necessary objects for prediction
+    model = pickle.load(open("data/model.pkl", "rb"))
+    scaler = pickle.load(open("data/scaler.pkl", "rb"))
+    pca = pickle.load(open("data/pca.pkl", "rb"))
+
+    # create a dataframe to store the user's values
+    new_data = pd.DataFrame({
+        'u': [ultraviolet],
+        'g': [green],
+        'r': [red],
+        'i': [infrared],
+        'z': [near],
+        'spec_obj_id': [spectroscopic],
+        'redshift': [redshift],
+        'plate': [plate],
+        'mjd': [julian]
+    })
+
+    # scale data, pca & predict
+    new_data_scaled = scaler.transform(new_data)
+    new_data_pca = pca.transform(new_data_scaled)
+    prediction = model.predict(new_data_pca)
+
+    if prediction[0] == 0:
+        return "galaxy"
+    elif prediction[0] == 1:
+        return "star"
+    elif prediction[0] == 2:
+        return "quasar"
+    else:
+        return "invalid data"
