@@ -4,7 +4,20 @@ from AstralObject.models import Astral
 
 import pandas as pd
 import pickle
+import warnings
+warnings.filterwarnings('ignore')
+# model = pickle.load(open("web_app/App/Dashboard/Models/model.pkl", "rb"))
+# scaler = pickle.load(open("web_app/App/Dashboard/Models/scaler.pkl", "rb"))
+# pca = pickle.load(open("web_app/App/Dashboard/Models/pca.pkl", "rb"))
 
+with open("models/model.pkl", "rb") as f:
+    model = pickle.load(f)
+
+with open("models/scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
+
+with open("models/pca.pkl", "rb") as f:
+    pca = pickle.load(f)
 
 # Create your views here.
 @login_required()
@@ -20,6 +33,20 @@ def dashboardView(request):
         redshift = request.POST.get('redshift')
         plate = request.POST.get('plate')
 
+        new_data = pd.DataFrame({'u': [ultraviolet],
+                                 'g': [green],
+                                 'r': [red],
+                                 'i': [infrared],
+                                 'z': [near],
+                                 'spec_obj_ID': [spectroscopic],
+                                 'redshift': [redshift],
+                                 'plate': [plate],
+                                 'MJD': [julian]})
+        new_data_scaled = scaler.transform(new_data)
+        new_data_pca = pca.transform(new_data_scaled)
+
+        prediction = model.predict(new_data_pca)[0]
+
         new_object = Astral(
             created_by=str(request.user),
             ultraviolet_filter=ultraviolet,
@@ -31,6 +58,7 @@ def dashboardView(request):
             spectroscopic_objects_id=spectroscopic,
             redshift_value=redshift,
             plate_id=plate,
+            prediction=prediction,
         )
         new_object.save()
         # After
@@ -44,20 +72,8 @@ def resultView(request):
     context = {
         'results': userResult,
     }
-    ultraviolet = float(request.GET['ultraviolet'])
-    green = float(request.GET['green'])
-    near = float(request.GET['near'])
-    red = float(request.GET['red'])
-    infrared = float(request.GET['infrared'])
-    julian = float(request.GET['julian'])
-    spectroscopic = float(request.GET['spectroscopic'])
-    redshift = float(request.GET['redshift'])
-    plate = float(request.GET['plate'])
 
-    result = get_prediction(ultraviolet, green, near, red, infrared, julian,
-                            spectroscopic, redshift, plate)
-
-    return render(request, 'results.html', context, {'result': result})
+    return render(request, 'results.html', context)
 
 
 def delete(request, id):
@@ -81,29 +97,22 @@ def get_prediction(ultraviolet, green, near, red, infrared, julian, spectroscopi
     scaler = pickle.load(open("data/scaler.pkl", "rb"))
     pca = pickle.load(open("data/pca.pkl", "rb"))
 
-    # create a dataframe to store the user's values
-    new_data = pd.DataFrame({
-        'u': [ultraviolet],
-        'g': [green],
-        'r': [red],
-        'i': [infrared],
-        'z': [near],
-        'spec_obj_id': [spectroscopic],
-        'redshift': [redshift],
-        'plate': [plate],
-        'mjd': [julian]
-    })
+    # input the data into a dataframe
+    new_data = pd.DataFrame({'u': [ultraviolet],
+                             'g': [green],
+                             'r': [red],
+                             'i': [infrared],
+                             'z': [near],
+                             'spec_obj_id': [spectroscopic],
+                             'redshift': [redshift],
+                             'plate': [plate],
+                             'mjd': [julian]})
 
-    # scale data, pca & predict
+    # scale and pca the data
     new_data_scaled = scaler.transform(new_data)
     new_data_pca = pca.transform(new_data_scaled)
+
+    # make the prediction
     prediction = model.predict(new_data_pca)
 
-    if prediction[0] == 0:
-        return "galaxy"
-    elif prediction[0] == 1:
-        return "star"
-    elif prediction[0] == 2:
-        return "quasar"
-    else:
-        return "invalid data"
+    return str(predicted_class[0])
