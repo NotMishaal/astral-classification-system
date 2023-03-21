@@ -23,8 +23,9 @@
           <img src="{% static 'Pics/Logo.svg'%}" class="logo">
         </a>
         <ul class="nav-links">
-          <li><a href="{% url 'resultView' %}">Results</a></li>
-          <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
+          <li><a href="{% url 'dashboardView' %}">Classify</a></li>
+                    <li><a href="{% url 'resultView' %}">Results</a></li>
+                    <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
       </nav>
     </div>
@@ -38,44 +39,44 @@
           <div class="dash-row">
             <div class="dash-col">
               <h4>Ultraviolet Filter</h4>
-              <input class="dash-input" name="ultraviolet" type="text" placeholder="Ultraviolet Filter" required>
+              <input class="dash-input" name="ultraviolet" type="number" step="0.01" placeholder="Ultraviolet Filter" required>
             </div>
             <div class="dash-col">
               <h4>Green Filter</h4>
-              <input class="dash-input" name="green" type="text" placeholder="Green Filter" required>
+              <input class="dash-input" name="green" type="number" step="0.01" placeholder="Green Filter" required>
             </div>
             <div class="dash-col">
               <h4>Near Infrared Filter</h4>
-              <input class="dash-input" name="near" type="text" placeholder="Near Infrared Filter" required>
+              <input class="dash-input" name="near" type="number" step="0.01" placeholder="Near Infrared Filter" required>
             </div>
           </div>
           <div class="dash-row">
             <div class="dash-col">
               <h4>Red Filter</h4>
-              <input class="dash-input" name="red" type="text" placeholder="Red Filter" required>
+              <input class="dash-input" name="red" type="number" step="0.01" placeholder="Red Filter" required>
             </div>
             <div class="dash-col">
               <h4>Infrared Filter</h4>
-              <input class="dash-input" name="infrared" type="text" placeholder="Infrared Filter" required>
+              <input class="dash-input" name="infrared" type="number" step="0.01" placeholder="Infrared Filter" required>
             </div>
             <div class="dash-col">
               <h4>Modified Julian Date</h4>
-              <input class="dash-input" name="julian" type="text" placeholder="Modified Julian Date" required>
+              <input class="dash-input" name="julian" type="number" step="0.01" placeholder="Modified Julian Date" required>
             </div>
           </div>
           <div class="dash-row">
             <div class="dash-col">
               <h4>Spectroscopic Object ID</h4>
-              <input class="dash-input" name="spectroscopic" type="text" placeholder="Spectroscopic Objects ID"
+              <input class="dash-input" name="spectroscopic" type="number" step="0.01" placeholder="Spectroscopic Objects ID"
                 required>
             </div>
             <div class="dash-col">
               <h4>Redshift Value</h4>
-              <input class="dash-input" name="redshift" type="text" placeholder="Redshift Value" required>
+              <input class="dash-input" name="redshift" type="number" step="0.01" placeholder="Redshift Value" required>
             </div>
             <div class="dash-col">
               <h4>Plate ID</h4>
-              <input class="dash-input" name="plate" type="text" placeholder="Plate ID" required>
+              <input class="dash-input" name="plate" type="number" step="0.01" placeholder="Plate ID" required>
             </div>
           </div>
           <div class="dash-row">

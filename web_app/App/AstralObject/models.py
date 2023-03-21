@@ -17,3 +17,4 @@ class Astral(models.Model):
     spectroscopic_objects_id = models.CharField(max_length=30)
     redshift_value = models.CharField(max_length=30)
     plate_id = models.CharField(max_length=30)
+    prediction = models.CharField(max_length=30)
