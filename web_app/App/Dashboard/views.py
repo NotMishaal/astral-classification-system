@@ -88,7 +88,7 @@ def checkView(request, id):
     context = {
         'result': result,
     }
-    return render(request, 'finalResult.html')
+    return render(request, 'finalResult.html', context)
 
 
 def get_prediction(ultraviolet, green, near, red, infrared, julian, spectroscopic, redshift, plate):

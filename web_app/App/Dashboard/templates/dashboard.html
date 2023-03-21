@@ -23,8 +23,9 @@
           <img src="{% static 'Pics/Logo.svg'%}" class="logo">
         </a>
         <ul class="nav-links">
-          <li><a href="{% url 'resultView' %}">Results</a></li>
-          <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
+          <li><a href="{% url 'dashboardView' %}">Classify</a></li>
+                    <li><a href="{% url 'resultView' %}">Results</a></li>
+                    <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
       </nav>
     </div>

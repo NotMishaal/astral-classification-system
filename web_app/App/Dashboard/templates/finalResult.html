@@ -23,6 +23,7 @@
                     <img src="{% static 'Pics/Logo.svg'%}" class="logo">
                 </a>
                 <ul class="nav-links">
+                    <li><a href="{% url 'dashboardView' %}">Classify</a></li>
                     <li><a href="{% url 'resultView' %}">Results</a></li>
                     <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
                 </ul>
@@ -30,7 +31,9 @@
         </div>
         {% if result.prediction == "0" %}
         <h1 id="classify-head">Star</h1>
-        <img src="{% static 'Pics/star.png'%}" class="resultImg">
+        <div class="result-pic">
+            <img src="{% static 'Pics/star.png'%}" class="resultImg">
+        </div>
         {% elif result.prediction == "1" %}
         <h1 id="classify-head">Galaxy</h1>
         <div class="result-pic">
@@ -38,7 +41,9 @@
         </div>
         {% else %}
         <h1 id="classify-head">Quasar</h1>
-        <img src="{% static 'Pics/quasar.png'%}" class="resultImg">
+        <div class="result-pic">
+            <img src="{% static 'Pics/quasar.png'%}" class="resultImg">
+        </div>
         {% endif %}
         <div class="dash-row">
 

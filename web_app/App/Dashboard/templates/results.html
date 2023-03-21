@@ -5,92 +5,56 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
-    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/landing.css">
+    <title>Astral Classification System</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@100;300;400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <section class="hero is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="{% url 'dashboardView' %}">
-                            <h1 class='title'>LOGO</h1>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="{% url 'dashboardView' %}">
-                                    <span>Home</span>
-                                </a>
-                            </span>
-
-                            <span class="navbar-item">
-                                <a class="button is-primary is-outlined" href="{% url 'logout' %}">
-                                    <span class="icon">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </span>
-                                    <span>Logout</span>
-                                </a>
-                            </span>
-
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+                <a href="{% url 'homeView' %}" class="logo">
+                    <img src="{% static 'Pics/Logo.svg'%}" class="logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'dashboardView' %}">Classify</a></li>
+                    <li><a href="{% url 'resultView' %}">Results</a></li>
+                    <li class="signup"><a href="{% url 'logout' %}">Log Out</a></li>
+                </ul>
             </nav>
         </div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-6 is-offset-3">
-                    {%for result in results%}
-                    <div class="columns">
-                        <div class="column">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="content">
-                                        <h5>Result's</h5>
-                                        Created by : {{result.created_by}} <br>
-                                        Info :
-                                        {{result.ultraviolet_filter}},
-                                        {{result.green_filter}},
-                                        {{result.near_infrared_filter}},
-                                        {{result.red_filter}},
-                                        {{result.infrared_filter}},
-                                        {{result.modified_julian_date}},
-                                        {{result.spectroscopic_objects_id}},
-                                        {{result.redshift_value}},
-                                        {{result.plate_id}}<br>
-                                        <a class="button is-primary is-small"
-                                            href="check/{{result.astral_id}}">Check</a>
-                                        <a class="button is-danger is-small"
-                                            href="delete/{{result.astral_id}}">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container2">
+            {%for result in results%}
+            <div class="res-card">
+                <div class="card-content">
+                    <h3>Result {{result.astral_id}}</h3>
+                    <p>Created by: {{result.created_by}}</p>
+                    <p>Info:</p>
+                    <p>
+                        {{result.ultraviolet_filter}},
+                        {{result.green_filter}},
+                        {{result.near_infrared_filter}},
+                        {{result.red_filter}},
+                        {{result.infrared_filter}},
+                        {{result.modified_julian_date}},
+                        {{result.spectroscopic_objects_id}},
+                        {{result.redshift_value}},
+                        {{result.plate_id}},
+                        {{result.prediction}}
+                    </p>
+                    <div class="button-group">
+                        <a class="button" href="check/{{result.astral_id}}">Check</a>
+                        <a class="button" href="delete/{{result.astral_id}}">Delete</a>
                     </div>
-                    <br>
-                    {%endfor%}
                 </div>
-
             </div>
+            {%endfor%}
         </div>
-    </section>
-    <script async type="text/javascript" src="../js/bulma.js"></script>
 </body>
-
 </html>
